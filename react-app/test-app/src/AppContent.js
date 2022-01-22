@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
 export default class AppContent extends Component {
-  constructor(props) {
-    super(props);
-    this.listRef = React.createRef();
-  }
+  state = { posts: [] };
 
   anotherFunction = () => {
     console.log("another function");
@@ -15,26 +12,20 @@ export default class AppContent extends Component {
   };
 
   fetchList = () => {
-    //fetchList() {
-    // console.log("I was clicked");
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
-        // this.anotherFunction();
-        // let posts = document.getElementById("post-list");
-        const posts = this.listRef.current;
-
-        json.forEach(function (obj) {
-          let li = document.createElement("li");
-          li.appendChild(document.createTextNode(obj.title));
-          posts.appendChild(li);
-        });
+        //console.log(json);
+        this.setState({ posts: json });
       });
   };
+  clickedItem = (x) => {
+    console.log("clicked", x);
+  };
+
   render() {
     return (
-      <p>
+      <div>
         This is the content.
         <br />
         <hr />
@@ -48,8 +39,17 @@ export default class AppContent extends Component {
           Fetch Data
         </button>
         <hr />
-        <ul id="post-list" ref={this.listRef}></ul>
-      </p>
+        <p>Posts is {this.state.posts.length} items long</p>
+        <ul>
+          {this.state.posts.map((c) => (
+            <li key={c.id}>
+              <a href="#!" onClick={() => this.clickedItem(c.id)}>
+                {c.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
