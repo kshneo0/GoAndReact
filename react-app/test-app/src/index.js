@@ -34,7 +34,10 @@ class App extends Component {
           posts={this.state.posts}
           handlePostChange={this.handlePostChange}
         />
-        <AppContent handlePostChange={this.handlePostChange} />
+        <AppContent
+          posts={this.state.posts}
+          handlePostChange={this.handlePostChange}
+        />
         {/* <AppFooter /> */}
         <AppFooterFunctionalComponent myProperty={"Hello, world"} />
       </div>
