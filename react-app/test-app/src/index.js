@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import AppHeader from "./AppHeader";
 import AppFooter from "./AppFooter";
 import AppContent from "./AppContent";
 
@@ -11,10 +12,8 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div>
-          <h1>Hello, world!</h1>
-          <AppContent />
-        </div>
+        <AppHeader title="Cool App" />
+        <AppContent />
         <AppFooter />
       </div>
     );
