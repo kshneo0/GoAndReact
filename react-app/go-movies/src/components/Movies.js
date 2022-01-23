@@ -9,7 +9,7 @@ export default class Movie extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:4000/v1/moviesxx")
+    fetch("http://localhost:4000/v1/movies")
       // .then((response) => response.json())
       .then((response) => {
         console.log("Status code is ", response.status);
