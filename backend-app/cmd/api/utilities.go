@@ -18,6 +18,18 @@ func (app *application) writeJSON(w http.ResponseWriter, status int, data interf
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	w.Write(js)
-	
+
 	return nil
+}
+
+func (app *application) errorJSON(w http.ResponseWriter, err error){
+	type jsonError struct {
+		Message string `json:"message"`
+	}
+
+	theError := jsonError {
+		Message: err.Error(),
+	}
+
+	app.writeJSON(w, http.StatusBadRequest, theError, "error")
 }
