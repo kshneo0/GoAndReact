@@ -4,3 +4,7 @@ brew install postgresql
 
 brew services start postgresql
 postgres -V
+
+
+npm uninstall react-router-dom
+npm install react-router-dom@v5.3.0
