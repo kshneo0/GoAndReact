@@ -75,7 +75,7 @@ export default class EditMovie extends Component {
   };
 
   hasError(key) {
-      return this.state.errors.indexOf(key) !== -1;
+    return this.state.errors.indexOf(key) !== -1;
   }
 
   componentDidMount() {
@@ -147,7 +147,7 @@ export default class EditMovie extends Component {
               name={"title"}
               value={movie.title}
               handleChange={this.handleChange}
-              errorDiv={this.hasError("title")?"text-danger":"d-none"}
+              errorDiv={this.hasError("title") ? "text-danger" : "d-none"}
               errorMsg={"Please enter a title"}
             />
 
@@ -186,7 +186,7 @@ export default class EditMovie extends Component {
 
             <TextArea
               title={"Description"}
-              name={"desctiption"}
+              name={"description"}
               value={movie.description}
               rows={"3"}
               handleChange={this.handleChange}
