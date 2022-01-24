@@ -8,10 +8,11 @@ const TextArea = (props) => {
         className="form-control"
         id={props.name}
         name={props.name}
-        rows={props.rows}
         onChange={props.handleChange}
-        value={props.value}
-      />
+        rows={props.rows}
+      >
+        {props.value}
+      </textarea>
     </div>
   );
 };
