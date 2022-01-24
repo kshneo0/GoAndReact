@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./EditMovie.css";
 import Input from "./form-components/Input";
 import TextArea from "./form-components/TextArea";
+import Select from "./form-components/Select";
 
 export default class EditMovie extends Component {
   state = {
@@ -22,6 +23,13 @@ export default class EditMovie extends Component {
         rating: "",
         description: "",
       },
+      mpaaOptions: [
+        { id: "G", value: "G" },
+        { id: "PG", value: "PG" },
+        { id: "PG13", value: "PG13" },
+        { id: "R", value: "R" },
+        { id: "NC17", value: "NC17" },
+      ],
       isLoaded: false,
       error: null,
     };
@@ -87,34 +95,14 @@ export default class EditMovie extends Component {
             handleChange={this.handleChange}
           />
 
-          <div className="mb-3">
-            <label htmlFor="mpaa_rating" className="form-label">
-              MPA Rating
-            </label>
-            <select
-              name="mpaa_rating"
-              className="form-select"
-              value={movie.mpaa_rating}
-              onChange={this.handleChange}
-            >
-              <option className="form-select">Chhose...</option>
-              <option className="form-select" value="G">
-                G
-              </option>
-              <option className="form-select" value="PG">
-                PG
-              </option>
-              <option className="form-select" value="PG13">
-                PG13
-              </option>
-              <option className="form-select" value="R">
-                R
-              </option>
-              <option className="form-select" value="NC17">
-                NC17
-              </option>
-            </select>
-          </div>
+          <Select
+            title={"MPAA Rating"}
+            name={"mpaa_rating"}
+            options={this.state.mpaaOptions}
+            value={movie.mpaa_rating}
+            handleChange={this.handleChange}
+            placeholder={"Choose..."}
+          />
 
           <Input
             title={"Rating"}
