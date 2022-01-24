@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./EditMovie.css";
-import Input from "./form-components/input";
+import Input from "./form-components/Input";
+import TextArea from "./form-components/TextArea";
 
 export default class EditMovie extends Component {
   state = {
@@ -61,19 +62,6 @@ export default class EditMovie extends Component {
             value={movie.id}
             onChange={this.handleChange}
           />
-          {/* <div className="mb-3">
-            <label htmlFor="title" className="form-label">
-              Title
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              name="title"
-              value={movie.title}
-              onChange={this.handleChange}
-            />
-          </div> */}
 
           <Input
             title={"Title"}
@@ -83,20 +71,6 @@ export default class EditMovie extends Component {
             handleChange={this.handleChange}
           />
 
-          {/* <div className="mb-3">
-            <label htmlFor="release_date" className="form-label">
-              Release date
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="release_date"
-              name="release_date"
-              value={movie.release_date}
-              onChange={this.handleChange}
-            />
-          </div> */}
-
           <Input
             title={"Release Date"}
             type={"date"}
@@ -104,20 +78,6 @@ export default class EditMovie extends Component {
             value={movie.release_date}
             handleChange={this.handleChange}
           />
-
-          {/* <div className="mb-3">
-            <label htmlFor="runtime" className="form-label">
-              Runtime
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="runtime"
-              name="runtime"
-              value={movie.runtime}
-              onChange={this.handleChange}
-            />
-          </div> */}
 
           <Input
             title={"Runtime"}
@@ -156,20 +116,6 @@ export default class EditMovie extends Component {
             </select>
           </div>
 
-          {/* <div className="mb-3">
-            <label htmlFor="rating" className="form-label">
-              Rating
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="rating"
-              name="rating"
-              value={movie.rating}
-              onChange={this.handleChange}
-            />
-          </div> */}
-
           <Input
             title={"Rating"}
             type={"text"}
@@ -178,21 +124,16 @@ export default class EditMovie extends Component {
             handleChange={this.handleChange}
           />
 
-          <div className="mb-3">
-            <label htmlFor="desctiption" className="form-label">
-              Description
-            </label>
-            <textarea
-              className="form-control"
-              id="desctiption"
-              name="desctiption"
-              rows="3"
-              onChange={this.handleChange}
-              value={movie.description}
-            />
-            <hr />
-            <button className="btn btn-primary">Save</button>
-          </div>
+          <TextArea
+            title={"Description"}
+            name={"desctiption"}
+            value={movie.desctiption}
+            rows={"3"}
+            handleChange={this.handleChange}
+          />
+
+          <hr />
+          <button className="btn btn-primary">Save</button>
         </form>
         <div className="mt-3">
           <per>{JSON.stringify(this.state, null, 3)}</per>
