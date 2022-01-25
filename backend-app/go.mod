@@ -10,3 +10,5 @@ require (
 )
 
 require github.com/pascaldekloe/jwt v1.10.0
+
+require github.com/justinas/alice v1.2.0 // indirect
