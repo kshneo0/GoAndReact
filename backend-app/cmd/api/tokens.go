@@ -24,6 +24,7 @@ type Credentials struct {
 }
 
 func (app *application) Signin(w http.ResponseWriter, r *http.Request) {
+
 	var creds Credentials
 
 	err := json.NewDecoder(r.Body).Decode(&creds)
