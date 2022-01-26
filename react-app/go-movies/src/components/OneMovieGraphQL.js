@@ -1,27 +1,24 @@
 import React, { Component, Fragment } from "react";
 
 export default class OneMovieGraphQL extends Component {
-  state = {
-    movie: [],
-    isLoaded: false,
-    error: null,
-  };
+  state = { movie: {}, isLoaded: false, error: null };
 
   componentDidMount() {
     const payload = `
-        {
-            movie(id:${this.props.match.params.id}) {
-                id
-                title
-                runtime
-                year
-                description
-                release_date
-                rating
-                mpaa_rating
-            }
+    {
+        movie(id: ${this.props.match.params.id}) {
+            id
+            title
+            runtime
+            year
+            description
+            release_date
+            rating
+            mpaa_rating
+            poster
         }
-        `;
+    }
+    `;
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -53,16 +50,27 @@ export default class OneMovieGraphQL extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <p>Loading...</p>;
+      return <p>Loading...2</p>;
     } else {
       return (
         <Fragment>
           <h2>
             Movie: {movie.title} ({movie.year})
           </h2>
+
+          {movie.poster !== "" && (
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster}`}
+                alt="poster"
+              />
+            </div>
+          )}
+
           <div className="float-start">
-            <small> Rating: {movie.mpaa_rating}</small>
+            <small>Rating: {movie.mpaa_rating}</small>
           </div>
+
           <div className="float-end">
             {movie.genres.map((m, index) => (
               <span className="badge bg-secondary me-1" key={index}>
@@ -71,6 +79,7 @@ export default class OneMovieGraphQL extends Component {
             ))}
           </div>
           <div className="clearfix"></div>
+
           <hr />
 
           <table className="table table-compact table-striped">

@@ -96,13 +96,13 @@ var movieType = graphql.NewObject(
 			"mpaa_rating": &graphql.Field{
 				Type: graphql.String,
 			},
-			"Created_at": &graphql.Field{
+			"created_at": &graphql.Field{
 				Type: graphql.DateTime,
 			},
-			"Updated_at": &graphql.Field{
+			"updated_at": &graphql.Field{
 				Type: graphql.DateTime,
 			},
-			"Poster": &graphql.Field{
+			"poster": &graphql.Field{
 				Type: graphql.String,
 			},
 		},
@@ -129,6 +129,7 @@ func (app *application) moviesGraphQL(w http.ResponseWriter, r *http.Request) {
 	resp := graphql.Do(params)
 	if len(resp.Errors) > 0 {
 		app.errorJSON(w, errors.New(fmt.Sprintf("failed: %+v", resp.Errors)))
+		return
 	}
 
 	j, _ := json.MarshalIndent(resp, "", " ")
