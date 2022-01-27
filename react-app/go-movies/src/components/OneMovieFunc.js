@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link } from "react-router-dom";
 
 function OneMovieFunc(props) {
   const [movie, setMovie] = useState([]);
