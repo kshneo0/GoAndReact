@@ -1,42 +1,42 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 
-function MoviesFunc(props) {
-  const [movies, setMovies] = useState([]);
+function GenresFunc(props) {
+  const [genres, setGenres] = useState([]);
   const [error, setError] = useState(null);
-  // const [errors, setErrors] = useState([]);
-  // const [alert,setAlert] = useState({type: "d-none", message: ""});
+
   useEffect(() => {
-    fetch("http://localhost:4000/v1/movies")
+    fetch("http://localhost:4000/v1/genres")
+      // .then((response) => response.json())
       .then((response) => {
-        console.log("Status code is ", response.status);
         if (response.status !== 200) {
-          setError("Invalid response code: " + response.status);
+          setError("Invalid response: ", response.status);
         } else {
           setError(null);
         }
         return response.json();
       })
       .then((json) => {
-        setMovies(json.movies);
+        setGenres(json.genres);
       });
-  }, []); // *** must set default value
-
+  }, []);
   if (error !== null) {
-    return <div> Error: {error.message}</div>;
+    return <div>Error: {error.message}</div>;
   } else {
     return (
       <Fragment>
-        <h2>Choose a Movie</h2>
-
+        <h2>Genres</h2>
         <div className="list-group">
-          {movies.map((m) => (
+          {genres.map((m) => (
             <Link
               key={m.id}
-              to={`/movies/${m.id}`}
               className="list-group-item list-group-item-action"
+              to={{
+                pathname: `/genre/${m.id}`,
+                genreName: m.genre_name,
+              }}
             >
-              {m.title}
+              {m.genre_name}
             </Link>
           ))}
         </div>
@@ -45,4 +45,4 @@ function MoviesFunc(props) {
   }
 }
 
-export default MoviesFunc;
+export default GenresFunc;
