@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Admin from "./components/Admin";
 import Home from "./components/Home";
-import EditMovie from "./components/EditMovie";
 import Login from "./components/Login";
 import GraphQL from "./components/GraphQL";
 import OneMovieGraphQL from "./components/OneMovieGraphQL";
@@ -10,6 +9,7 @@ import MoviesFunc from "./components/MoviesFunc.js";
 import GenresFunc from "./components/GenresFunc.js";
 import OneMovieFunc from "./components/OneMovieFunc.js";
 import OneGenreFunc from "./components/OneGenreFunc.js";
+import EditMovieFunc from "./components/EditMovieFunc";
 
 export default class App extends Component {
   constructor(props) {
@@ -115,7 +115,7 @@ export default class App extends Component {
                 <Route
                   path="/admin/movie/:id"
                   component={(props) => (
-                    <EditMovie {...props} jwt={this.state.jwt} />
+                    <EditMovieFunc {...props} jwt={this.state.jwt} />
                   )}
                 />
 
