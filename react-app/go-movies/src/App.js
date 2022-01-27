@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AdminFunc from "./components/AdminFunc";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import LoginFunc from "./components/LoginFunc";
 import GraphQL from "./components/GraphQL";
 import OneMovieGraphQL from "./components/OneMovieGraphQL";
 import MoviesFunc from "./components/MoviesFunc.js";
@@ -101,7 +101,10 @@ export default class App extends Component {
                   exact
                   path="/login"
                   component={(props) => (
-                    <Login {...props} handleJWTChange={this.handleJWTChange} />
+                    <LoginFunc
+                      {...props}
+                      handleJWTChange={this.handleJWTChange}
+                    />
                   )}
                 />
                 <Route exact path="/genres">
