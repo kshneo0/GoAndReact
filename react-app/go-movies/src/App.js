@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Admin from "./components/Admin";
 import Home from "./components/Home";
-import OneMovie from "./components/OneMovie";
 import OneGenre from "./components/OneGenre";
 import EditMovie from "./components/EditMovie";
 import Login from "./components/Login";
@@ -10,6 +9,7 @@ import GraphQL from "./components/GraphQL";
 import OneMovieGraphQL from "./components/OneMovieGraphQL";
 import MoviesFunc from "./components/MoviesFunc.js";
 import GenresFunc from "./components/GenresFunc.js";
+import OneMovieFunc from "./components/OneMovieFunc.js";
 
 export default class App extends Component {
   constructor(props) {
@@ -91,7 +91,7 @@ export default class App extends Component {
             </div>
             <div className="col-md-10">
               <Switch>
-                <Route path="/movies/:id" component={OneMovie} />
+                <Route path="/movies/:id" component={OneMovieFunc} />
                 <Route path="/moviesgraphql/:id" component={OneMovieGraphQL} />
                 <Route path="/movies">
                   <MoviesFunc />
