@@ -1,3 +1,4 @@
+// import React, { useEffect, useState, Fragment } from "react";
 import React, { Component, Fragment } from "react";
 import "./EditMovie.css";
 import Input from "./form-components/Input";
@@ -5,10 +6,22 @@ import TextArea from "./form-components/TextArea";
 import Select from "./form-components/Select";
 import Alert from "./ui-components/Alert";
 import { Link } from "react-router-dom";
+
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 export default class EditMovie extends Component {
+  
+  // const [errors, setErrors] = useState([]);
+  // const [alert,setAlert] = useState({type: "d-none", message: ""});
+  // const mpaaOptions = [
+  //       { id: "G", value: "G" },
+  //       { id: "PG", value: "PG" },
+  //       { id: "PG13", value: "PG13" },
+  //       { id: "R", value: "R" },
+  //       { id: "NC17", value: "NC17" },
+  //     ];
+
   constructor(props) {
     super(props);
     this.state = {
